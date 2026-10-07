@@ -1,0 +1,15 @@
+name: Lembretes de follow-up
+
+on:
+  schedule:
+    - cron: "3 11 * * 1-5" # dias úteis, 08:03 (horário de Brasília)
+  workflow_dispatch:
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chamar o app
+        run: |
+          curl -fsS -X POST "${{ vars.APP_URL }}/api/cron/lembretes" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"

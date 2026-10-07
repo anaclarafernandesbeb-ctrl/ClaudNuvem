@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-marinho: #0f2236;
+  --color-marinho-2: #17304a;
+  --color-creme: #f7f5ef;
+  --color-papel: #fffdf8;
+  --color-borda: #e2ddd0;
+  --color-laranja: #e8572a;
+  --color-laranja-escuro: #c2461e;
+  --color-texto-suave: #4a5568;
+  --font-sans: "DM Sans", Arial, sans-serif;
+  --font-display: "Space Grotesk", Arial, sans-serif;
+}
+
+body {
+  background: var(--color-creme);
+  color: var(--color-marinho);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 font-semibold transition disabled:opacity-60;
+}
+@utility btn-primario {
+  @apply btn bg-laranja text-marinho hover:bg-laranja-escuro hover:text-creme;
+}
+@utility btn-secundario {
+  @apply btn border border-borda bg-papel text-marinho hover:border-marinho;
+}
+@utility cartao {
+  @apply rounded-2xl border border-borda bg-papel p-5;
+}
+@utility campo {
+  @apply w-full rounded-xl border border-borda bg-papel px-4 py-2.5 outline-none focus:border-laranja;
+}
+@utility rotulo {
+  @apply mb-1 block text-sm font-semibold;
+}
