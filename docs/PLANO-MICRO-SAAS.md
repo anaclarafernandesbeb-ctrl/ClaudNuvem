@@ -1,5 +1,7 @@
 # Plano do Micro SaaS de Prospecção Inteligente
 
+> **Atualização:** este é o plano v1. A pesquisa de mercado e a proposta revisada, mais enxuta e fácil de implementar, estão em [PESQUISA-E-PROPOSTA-V2.md](./PESQUISA-E-PROPOSTA-V2.md). Onde os dois documentos divergirem (fonte de dados, envio de e-mails, escopo do MVP, preços e roadmap), vale a v2.
+
 > Nome provisório: **Prospecta**
 > Público: empreendedores e pequenas empresas B2B (1 a 20 pessoas) que vendem serviços ou produtos para outras empresas e não têm um time de SDR (pré-vendas).
 
