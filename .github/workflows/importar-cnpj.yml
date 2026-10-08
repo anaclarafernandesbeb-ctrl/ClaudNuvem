@@ -1,0 +1,23 @@
+name: Importar dados do CNPJ
+
+on:
+  schedule:
+    - cron: "17 6 15 * *" # todo dia 15, 03:17 (horário de Brasília)
+  workflow_dispatch:
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r etl/requirements.txt
+      - run: python etl/importar_cnpj.py
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          UFS: ${{ vars.UFS }}
+          DIAS: ${{ vars.DIAS }}
+          CNAES: ${{ vars.CNAES }}
