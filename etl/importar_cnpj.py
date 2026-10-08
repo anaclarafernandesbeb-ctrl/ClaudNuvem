@@ -89,31 +89,54 @@ def mes_mais_recente():
     return meses[-1]
 
 
-def baixar(url, destino, tentativas=4):
-    # O servidor da Receita (SERPRO+) às vezes estagna um download no meio.
-    # Usamos um timeout de socket curto (vale por operação de leitura, não pelo
-    # total) e repetimos o arquivo do zero quando trava, em vez de ficar pendurado.
+PISO_KBPS = int(os.environ.get("CNPJ_PISO_KBPS", "40"))  # velocidade mínima tolerada
+CARENCIA = 45  # segundos antes de começar a cobrar velocidade
+
+
+def baixar(url, destino, tentativas=8):
+    # O servidor da Receita (SERPRO+) às vezes passa a mandar os dados num fio
+    # (quase parado), sem fechar a conexão — o timeout de inatividade não pega
+    # isso. Então cobramos uma velocidade mínima e, quando ela cai, abortamos e
+    # RETOMAMOS de onde parou (cabeçalho Range), que costuma reconectar rápido.
     nome = os.path.basename(destino)
+    piso = PISO_KBPS * 1024
+    inicio = time.time()
     for tentativa in range(1, tentativas + 1):
+        ja = os.path.getsize(destino) if os.path.exists(destino) else 0
+        cabecalhos = dict(HEADERS)
+        if ja:
+            cabecalhos["Range"] = f"bytes={ja}-"
         t0 = time.time()
-        total = 0
+        parcial = 0
         try:
-            req = urllib.request.Request(url, headers=HEADERS)
-            with urllib.request.urlopen(req, timeout=300) as r, open(destino, "wb") as f:
+            req = urllib.request.Request(url, headers=cabecalhos)
+            r = urllib.request.urlopen(req, timeout=120)
+            status = getattr(r, "status", 200)
+            # Se pedimos continuação mas o servidor mandou o arquivo inteiro (200),
+            # recomeçamos do zero para não duplicar bytes.
+            if ja and status != 206:
+                ja = 0
+            modo = "ab" if ja else "wb"
+            with r, open(destino, modo) as f:
                 while bloco := r.read(1024 * 1024):
                     f.write(bloco)
-                    total += len(bloco)
-            dt = max(time.time() - t0, 0.1)
-            log(f"baixado {nome}: {total // 1048576} MB em {int(dt)}s "
-                f"({int((total / 1024) / dt)} KB/s)")
+                    parcial += len(bloco)
+                    dt = time.time() - t0
+                    if dt > CARENCIA and parcial / dt < piso:
+                        raise TimeoutError(
+                            f"lento demais ({int(parcial / dt / 1024)} KB/s)"
+                        )
+            total = ja + parcial
+            log(f"baixado {nome}: {total // 1048576} MB em "
+                f"{int(time.time() - inicio)}s")
             return destino
         except Exception as e:
-            dt = int(time.time() - t0)
-            log(f"falha em {nome} (tentativa {tentativa}/{tentativas}, "
-                f"{total // 1048576} MB em {dt}s): {e}")
+            feito = os.path.getsize(destino) if os.path.exists(destino) else 0
+            log(f"interrompido {nome} (tentativa {tentativa}/{tentativas}, "
+                f"{feito // 1048576} MB acumulados): {e}")
             if tentativa == tentativas:
                 raise
-            time.sleep(5)
+            time.sleep(10)
 
 
 def linhas_do_zip(caminho):
