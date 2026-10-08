@@ -32,7 +32,7 @@ import psycopg
 
 BASE_URL = os.environ.get(
     "CNPJ_BASE_URL",
-    "https://arquivos.receitafederal.gov.br/dados/cnpj/dados_abertos_cnpj/",
+    "https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/",
 ).rstrip("/") + "/"
 UFS = {u.strip().upper() for u in os.environ.get("UFS", "").split(",") if u.strip()}
 DIAS = int(os.environ.get("DIAS", "120"))
