@@ -89,8 +89,9 @@ def mes_mais_recente():
     return meses[-1]
 
 
-PISO_KBPS = int(os.environ.get("CNPJ_PISO_KBPS", "40"))  # velocidade mínima tolerada
-CARENCIA = 45  # segundos antes de começar a cobrar velocidade
+PISO_KBPS = int(os.environ.get("CNPJ_PISO_KBPS", "120"))  # velocidade mínima tolerada
+CARENCIA = 20  # segundos antes de começar a cobrar velocidade
+TIMEOUT = int(os.environ.get("CNPJ_TIMEOUT", "60"))  # timeout de socket por leitura
 
 
 def baixar(url, destino, tentativas=8):
@@ -108,9 +109,11 @@ def baixar(url, destino, tentativas=8):
             cabecalhos["Range"] = f"bytes={ja}-"
         t0 = time.time()
         parcial = 0
+        proximo_log = 64 * 1048576  # registra progresso a cada 64 MB
+        log(f"baixando {nome}" + (f" (retomando de {ja // 1048576} MB)" if ja else ""))
         try:
             req = urllib.request.Request(url, headers=cabecalhos)
-            r = urllib.request.urlopen(req, timeout=120)
+            r = urllib.request.urlopen(req, timeout=TIMEOUT)
             status = getattr(r, "status", 200)
             # Se pedimos continuação mas o servidor mandou o arquivo inteiro (200),
             # recomeçamos do zero para não duplicar bytes.
@@ -122,6 +125,10 @@ def baixar(url, destino, tentativas=8):
                     f.write(bloco)
                     parcial += len(bloco)
                     dt = time.time() - t0
+                    if parcial >= proximo_log:
+                        log(f"  {nome}: {(ja + parcial) // 1048576} MB "
+                            f"({int(parcial / dt / 1024)} KB/s)")
+                        proximo_log += 64 * 1048576
                     if dt > CARENCIA and parcial / dt < piso:
                         raise TimeoutError(
                             f"lento demais ({int(parcial / dt / 1024)} KB/s)"
