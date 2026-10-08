@@ -26,8 +26,10 @@ import os
 import re
 import sys
 import tempfile
+import time
 import urllib.request
 import zipfile
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta
 
 import psycopg
@@ -50,6 +52,10 @@ if SHARE_TOKEN:
     HEADERS["Authorization"] = "Basic " + base64.b64encode(
         f"{SHARE_TOKEN}:".encode()
     ).decode()
+# Quantos arquivos baixar ao mesmo tempo. O servidor novo da Receita é lento por
+# conexão, então baixar em paralelo encurta muito o tempo total. Ajustável por
+# variável de ambiente caso o servidor passe a limitar conexões simultâneas.
+CONCORRENCIA = max(1, int(os.environ.get("CNPJ_CONCORRENCIA", "6")))
 UFS = {u.strip().upper() for u in os.environ.get("UFS", "").split(",") if u.strip()}
 DIAS = int(os.environ.get("DIAS", "120"))
 CNAES = [c.strip() for c in os.environ.get("CNAES", "").split(",") if c.strip()]
@@ -84,11 +90,18 @@ def mes_mais_recente():
 
 
 def baixar(url, destino):
-    log(f"baixando {url}")
+    nome = os.path.basename(destino)
+    t0 = time.time()
     req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=600) as r, open(destino, "wb") as f:
+    total = 0
+    with urllib.request.urlopen(req, timeout=1800) as r, open(destino, "wb") as f:
         while bloco := r.read(1024 * 1024):
             f.write(bloco)
+            total += len(bloco)
+    dt = max(time.time() - t0, 0.1)
+    log(f"baixado {nome}: {total // 1048576} MB em {int(dt)}s "
+        f"({int((total / 1024) / dt)} KB/s)")
+    return destino
 
 
 def linhas_do_zip(caminho):
@@ -128,6 +141,17 @@ def main():
         baixar(pasta + nome, destino)
         return destino
 
+    def baixar_varios(nomes):
+        """Baixa a lista de arquivos em paralelo e entrega cada caminho assim que
+        termina (ordem de chegada), para processar enquanto os outros baixam."""
+        with ThreadPoolExecutor(max_workers=CONCORRENCIA) as executor:
+            futuros = {
+                executor.submit(baixar, pasta + nome, os.path.join(tmp, nome)): nome
+                for nome in nomes
+            }
+            for futuro in as_completed(futuros):
+                yield futuros[futuro], futuro.result()
+
     # Tabelas auxiliares
     municipios = {}
     for linha in linhas_do_zip(arquivo("Municipios.zip")):
@@ -138,10 +162,9 @@ def main():
         if len(linha) >= 2:
             cnaes.append((linha[0].strip(), linha[1].strip()))
 
-    # Estabelecimentos filtrados
+    # Estabelecimentos filtrados (baixados em paralelo)
     estabelecimentos = {}
-    for i in range(10):
-        caminho = arquivo(f"Estabelecimentos{i}.zip")
+    for nome, caminho in baixar_varios([f"Estabelecimentos{i}.zip" for i in range(10)]):
         for c in linhas_do_zip(caminho):
             if len(c) < 28 or c[5] != "02" or c[19] not in UFS:
                 continue
@@ -173,18 +196,17 @@ def main():
                 "email": email.lower() if email else None,
             }
         os.remove(caminho)
-        log(f"Estabelecimentos{i}: {len(estabelecimentos)} empresas selecionadas até agora")
+        log(f"{nome}: {len(estabelecimentos)} empresas selecionadas até agora")
 
     # Dados da empresa (razão social, natureza jurídica, porte)
     basicos = {e["basico"] for e in estabelecimentos.values()}
     empresas = {}
-    for i in range(10):
-        caminho = arquivo(f"Empresas{i}.zip")
+    for nome, caminho in baixar_varios([f"Empresas{i}.zip" for i in range(10)]):
         for c in linhas_do_zip(caminho):
             if len(c) >= 6 and c[0] in basicos:
                 empresas[c[0]] = (limpar(c[1]), c[2].strip(), PORTES.get(c[5].strip()))
         os.remove(caminho)
-        log(f"Empresas{i}: {len(empresas)} encontradas")
+        log(f"{nome}: {len(empresas)} encontradas")
 
     log("gravando no banco")
     with psycopg.connect(database_url) as conn, conn.cursor() as cur:
