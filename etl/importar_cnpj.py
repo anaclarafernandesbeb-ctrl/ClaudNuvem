@@ -89,19 +89,31 @@ def mes_mais_recente():
     return meses[-1]
 
 
-def baixar(url, destino):
+def baixar(url, destino, tentativas=4):
+    # O servidor da Receita (SERPRO+) às vezes estagna um download no meio.
+    # Usamos um timeout de socket curto (vale por operação de leitura, não pelo
+    # total) e repetimos o arquivo do zero quando trava, em vez de ficar pendurado.
     nome = os.path.basename(destino)
-    t0 = time.time()
-    req = urllib.request.Request(url, headers=HEADERS)
-    total = 0
-    with urllib.request.urlopen(req, timeout=1800) as r, open(destino, "wb") as f:
-        while bloco := r.read(1024 * 1024):
-            f.write(bloco)
-            total += len(bloco)
-    dt = max(time.time() - t0, 0.1)
-    log(f"baixado {nome}: {total // 1048576} MB em {int(dt)}s "
-        f"({int((total / 1024) / dt)} KB/s)")
-    return destino
+    for tentativa in range(1, tentativas + 1):
+        t0 = time.time()
+        total = 0
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=300) as r, open(destino, "wb") as f:
+                while bloco := r.read(1024 * 1024):
+                    f.write(bloco)
+                    total += len(bloco)
+            dt = max(time.time() - t0, 0.1)
+            log(f"baixado {nome}: {total // 1048576} MB em {int(dt)}s "
+                f"({int((total / 1024) / dt)} KB/s)")
+            return destino
+        except Exception as e:
+            dt = int(time.time() - t0)
+            log(f"falha em {nome} (tentativa {tentativa}/{tentativas}, "
+                f"{total // 1048576} MB em {dt}s): {e}")
+            if tentativa == tentativas:
+                raise
+            time.sleep(5)
 
 
 def linhas_do_zip(caminho):
