@@ -12,12 +12,14 @@ Variáveis de ambiente:
   UFS             obrigatória
   DIAS            opcional, padrão 120
   CNAES           opcional, ex.: "56,9602,8630"
-  CNPJ_BASE_URL   opcional, pasta dos arquivos da Receita
+  CNPJ_BASE_URL   opcional, pasta dos arquivos da Receita (compartilhamento WebDAV)
+  CNPJ_SHARE_TOKEN opcional, token do link público (padrão: lido do CNPJ_BASE_URL)
   CNPJ_MES        opcional, ex.: "2026-09" (padrão: o mais recente)
 
 Rodado todo mês pelo GitHub Actions (.github/workflows/importar-cnpj.yml).
 """
 
+import base64
 import csv
 import io
 import os
@@ -30,10 +32,24 @@ from datetime import date, datetime, timedelta
 
 import psycopg
 
+# Desde 2026 os dados abertos do CNPJ ficam num compartilhamento público do tipo
+# Nextcloud (SERPRO+). Acessamos pelo WebDAV do link público: o "usuário" do
+# Basic Auth é o token do link (o trecho logo depois de /dav/files/) e a senha é
+# vazia. A estrutura é .../CNPJ/<AAAA-MM>/<Arquivo>.zip.
 BASE_URL = os.environ.get(
     "CNPJ_BASE_URL",
-    "https://arquivos.receitafederal.gov.br/dados/cnpj/dados_abertos_cnpj/",
+    "https://arquivos.receitafederal.gov.br/public.php/dav/files/"
+    "gn672Ad4CF8N6TK/Dados/Cadastros/CNPJ/",
 ).rstrip("/") + "/"
+_token_na_url = re.search(r"/dav/files/([^/]+)/", BASE_URL)
+SHARE_TOKEN = os.environ.get(
+    "CNPJ_SHARE_TOKEN", _token_na_url.group(1) if _token_na_url else ""
+)
+HEADERS = {"User-Agent": "prospecta-importer/1.0"}
+if SHARE_TOKEN:
+    HEADERS["Authorization"] = "Basic " + base64.b64encode(
+        f"{SHARE_TOKEN}:".encode()
+    ).decode()
 UFS = {u.strip().upper() for u in os.environ.get("UFS", "").split(",") if u.strip()}
 DIAS = int(os.environ.get("DIAS", "120"))
 CNAES = [c.strip() for c in os.environ.get("CNAES", "").split(",") if c.strip()]
@@ -51,9 +67,17 @@ def mes_mais_recente():
     mes = os.environ.get("CNPJ_MES")
     if mes:
         return mes
-    with urllib.request.urlopen(BASE_URL, timeout=120) as r:
-        html = r.read().decode("utf-8", "ignore")
-    meses = sorted(set(re.findall(r"(\d{4}-\d{2})/", html)))
+    # Lista as pastas mensais com um PROPFIND no WebDAV do compartilhamento.
+    req = urllib.request.Request(
+        BASE_URL,
+        method="PROPFIND",
+        headers={**HEADERS, "Depth": "1", "Content-Type": "application/xml"},
+        data=b'<?xml version="1.0"?><d:propfind xmlns:d="DAV:">'
+        b"<d:prop><d:resourcetype/></d:prop></d:propfind>",
+    )
+    with urllib.request.urlopen(req, timeout=120) as r:
+        corpo = r.read().decode("utf-8", "ignore")
+    meses = sorted(set(re.findall(r"(\d{4}-\d{2})/", corpo)))
     if not meses:
         sys.exit(f"Não encontrei as pastas mensais em {BASE_URL}")
     return meses[-1]
@@ -61,7 +85,8 @@ def mes_mais_recente():
 
 def baixar(url, destino):
     log(f"baixando {url}")
-    with urllib.request.urlopen(url, timeout=600) as r, open(destino, "wb") as f:
+    req = urllib.request.Request(url, headers=HEADERS)
+    with urllib.request.urlopen(req, timeout=600) as r, open(destino, "wb") as f:
         while bloco := r.read(1024 * 1024):
             f.write(bloco)
 
