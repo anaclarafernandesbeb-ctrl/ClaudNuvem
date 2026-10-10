@@ -1,0 +1,69 @@
+/* ============================================================
+   PULSO LAB — Design Tokens · pulsolab.tech
+   Identidade visual da marca (cores, tipografia, espaçamento,
+   raio, elevação, movimento).
+   ============================================================ */
+
+:root {
+
+  /* ---------- CORES DE MARCA (fixas) ---------- */
+  --cyan:   #2BE0FF;   /* Ciano Pulso   */
+  --violet: #9A5BFF;   /* Violeta Pulso */
+  --rose:   #FF3D9A;   /* Rosa Sinal    */
+  --mint:   #5BEFBB;   /* Menta Status  */
+  --amber:  #FFBC57;   /* Âmbar Alerta  */
+
+  /* ---------- GRADIENTES ---------- */
+  --grad-pulse: linear-gradient(115deg, #2BE0FF 0%, #9A5BFF 52%, #FF3D9A 100%);
+  --grad-cool:  linear-gradient(115deg, #2BE0FF, #9A5BFF);
+  --grad-warm:  linear-gradient(115deg, #9A5BFF, #FF3D9A);
+
+  /* ---------- SUPERFÍCIES / TEXTO — TEMA ESCURO (principal) ---------- */
+  --bg:         #0B0916;
+  --surface-1:  #141122;
+  --surface-2:  #1C1733;
+  --line:       #2A2342;
+  --line-soft:  #201B33;
+  --fg:         #F3F0FB;   /* texto principal   */
+  --muted:      #A49FC2;   /* texto secundário  */
+  --faint:      #716B90;   /* texto terciário   */
+  --void:       #07050E;   /* fundo "tela"      */
+
+  /* versões de cor legíveis como TEXTO no escuro (passam contraste) */
+  --cyan-ink:   #2BE0FF;
+  --violet-ink: #B48BFF;
+  --rose-ink:   #FF6FB2;
+  --mint-ink:   #5BEFBB;
+  --amber-ink:  #FFBC57;
+
+  /* ---------- TIPOGRAFIA ---------- */
+  --font-display: "Unbounded", "Trebuchet MS", sans-serif;      /* títulos / impacto   */
+  --font-body:    "Sora", system-ui, -apple-system, sans-serif; /* corpo / interface   */
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;    /* dados / código      */
+
+  /* escala tipográfica (responsiva) */
+  --step--1: clamp(.78rem, .74rem + .2vw, .86rem);
+  --step-0:  clamp(.95rem, .9rem + .25vw, 1.05rem);
+  --step-1:  clamp(1.15rem, 1.05rem + .5vw, 1.4rem);
+  --step-2:  clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  --step-3:  clamp(2.1rem, 1.7rem + 2vw, 3.3rem);
+  --step-4:  clamp(3rem, 2rem + 5vw, 6rem);
+
+  /* ---------- ESPAÇAMENTO (base 4pt) ---------- */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-6: 24px;  --space-8: 32px;  --space-12: 48px; --space-16: 64px;
+
+  /* ---------- RAIO DE CANTO ---------- */
+  --radius-xs: 8px;  --radius-s: 12px;  --radius: 18px;  --radius-full: 999px;
+
+  /* ---------- ELEVAÇÃO (sombras) ---------- */
+  --elev-1: 0 1px 2px rgba(0,0,0,.4), 0 2px 8px -4px rgba(0,0,0,.5);
+  --elev-2: 0 10px 30px -14px rgba(0,0,0,.7);
+  --elev-3: 0 30px 60px -30px rgba(43,224,255,.5);
+
+  /* ---------- MOVIMENTO ---------- */
+  --ease-out:    cubic-bezier(.22, 1, .36, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --ease-pulse:  cubic-bezier(.4, 0, .2, 1);
+  --dur-fast: 120ms;  --dur: 220ms;  --dur-slow: 380ms;
+}
