@@ -4,8 +4,21 @@ Site estático (HTML/CSS/JS puro, sem build) da **Pulso Lab** — a empresa-mãe
 O Prospecta (app Next.js na pasta `web/` da raiz) é um **produto** da Pulso Lab.
 
 - **Domínio:** pulsolab.tech
-- **Páginas:** `index.html` (landing) e `servicos.html` (serviços detalhados)
+- **Páginas:** `index.html` (landing) e `servicos.html` (soluções em detalhe)
 - **Tema:** dark neon único, fiel ao design system da marca
+- **Conteúdo:** baseado na apresentação oficial da Pulso Lab (out/2026), em
+  formato dor → solução
+
+### Estrutura da landing
+
+1. Hero: promessa + painel com um fluxo automatizado de exemplo
+2. Dores → solução (6 dores reais dos clientes, cada uma com a solução Pulso)
+3. Por que agora (dados de mercado, com fontes)
+4. Jornada: presença → autoridade → confiança → venda
+5. Soluções (WhatsApp, presença & conteúdo, CRM, IA, produto, integrações)
+6. Diferencial: "Todo mundo entrega ideia. A gente entrega feito."
+7. Como entrar: produtos de entrada → mentoria → assessoria
+8. Produto Pulso (Prospecta), Sobre (Ana Fernandes + Ada Lovelace) e CTA
 
 ## Estrutura
 
@@ -29,7 +42,7 @@ Busque por `TODO`, `AGENDAR_AQUI` e `5500000000000` nos arquivos
 
 | Placeholder | Trocar por | Onde |
 |---|---|---|
-| `AGENDAR_AQUI` | Link do Calendly/Cal.com | botão principal "Agendar uma call" (2 lugares) |
+| `AGENDAR_AQUI` | Link do Calendly/Cal.com | botão principal "Agendar diagnóstico" (1 em cada página) |
 | `5500000000000` | Nº do WhatsApp (formato internacional, só dígitos — ex: `5511999999999`) | botão WhatsApp e rodapé |
 | `contato@pulsolab.tech` | E-mail real, se for outro | CTA e rodapé |
 | `instagram.com/pulsolab` | @ real do Instagram | rodapé |

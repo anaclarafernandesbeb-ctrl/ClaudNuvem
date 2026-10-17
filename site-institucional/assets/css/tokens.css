@@ -5,6 +5,7 @@
    ============================================================ */
 
 :root {
+  color-scheme: dark;   /* tema escuro único, deliberado */
 
   /* ---------- CORES DE MARCA (fixas) ---------- */
   --cyan:   #2BE0FF;   /* Ciano Pulso   */
@@ -28,6 +29,8 @@
   --muted:      #A49FC2;   /* texto secundário  */
   --faint:      #716B90;   /* texto terciário   */
   --void:       #07050E;   /* fundo "tela"      */
+  --glass:      rgba(20, 17, 34, .72);   /* superfície translúcida */
+  --grid:       rgba(154, 91, 255, .10); /* linhas da grade técnica */
 
   /* versões de cor legíveis como TEXTO no escuro (passam contraste) */
   --cyan-ink:   #2BE0FF;

@@ -2,13 +2,14 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Serviços — Pulso Lab</title>
-<meta name="description" content="Marca que pulsa, ecossistema conectado, IA que resolve e dados em tempo real. Conheça em detalhe as quatro frentes da Pulso Lab — e como elas se conectam num sistema só.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Soluções Pulso Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Presença e conteúdo, automação de WhatsApp, CRM próprio, IA aplicada, produto próprio e integrações. Veja o que cada solução da Pulso Lab resolve, o que entra e o resultado que você ganha.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Serviços — Pulso Lab">
-<meta property="og:description" content="Marca, integração, IA e tempo real. As quatro frentes da Pulso Lab em detalhe.">
+<meta property="og:title" content="Soluções · Pulso Lab">
+<meta property="og:description" content="Cada dor tem solução. Conteúdo, WhatsApp, CRM e IA implementados de verdade.">
 <meta property="og:url" content="https://pulsolab.tech/servicos.html">
 <meta property="og:locale" content="pt_BR">
 <meta name="theme-color" content="#0B0916">
@@ -23,6 +24,15 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+
+<!-- gradiente compartilhado pelos ícones -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="ig" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2BE0FF"/><stop offset=".55" stop-color="#9A5BFF"/><stop offset="1" stop-color="#FF3D9A"/>
+    </linearGradient>
+  </defs>
+</svg>
 
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
@@ -47,14 +57,14 @@
     </a>
 
     <div class="nav-links">
-      <a href="index.html#o-que-fazemos">O que fazemos</a>
-      <a href="servicos.html">Serviços</a>
-      <a href="index.html#produtos">Produtos</a>
+      <a href="servicos.html" aria-current="page">Soluções</a>
+      <a href="#como-entrar">Como entrar</a>
+      <a href="index.html#diferencial">Diferencial</a>
       <a href="index.html#sobre">Sobre</a>
     </div>
 
     <div class="nav-cta">
-      <a class="btn btn-primary" href="index.html#agendar">Agendar call <span class="arrow">→</span></a>
+      <a class="btn btn-primary btn-sm" href="#agendar">Agendar diagnóstico <span class="arrow">→</span></a>
     </div>
 
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -63,151 +73,232 @@
       </svg>
     </button>
   </nav>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html#o-que-fazemos">O que fazemos</a>
-    <a href="servicos.html">Serviços</a>
-    <a href="index.html#produtos">Produtos</a>
+  <div class="mobile-menu wrap" id="mobile-menu">
+    <a href="servicos.html" aria-current="page">Soluções</a>
+    <a href="#como-entrar">Como entrar</a>
+    <a href="index.html#diferencial">Diferencial</a>
     <a href="index.html#sobre">Sobre</a>
-    <a class="btn btn-primary" href="index.html#agendar">Agendar call →</a>
+    <a class="btn btn-primary" href="#agendar">Agendar diagnóstico →</a>
   </div>
 </header>
 
 <main>
 
 <!-- ============================ HERO DA PÁGINA ============================ -->
-<section class="page-hero wrap" aria-labelledby="ph-title">
-  <span class="eyebrow" style="margin-inline:auto"><span class="dot"></span>Serviços</span>
-  <h1 id="ph-title">Quatro frentes que viram <span class="grad">um sistema só</span></h1>
-  <p>Cada frente resolve uma parte — e todas se conectam. Você pode começar por uma e crescer, ou montar o ecossistema completo desde o início.</p>
+<section class="page-hero" aria-labelledby="ph-title">
+  <div class="hero-bg" aria-hidden="true"><canvas></canvas></div>
+  <div class="wrap">
+    <span class="chip"><span class="dot"></span>Soluções</span>
+    <h1 id="ph-title">Cada dor tem solução. E a gente <span class="grad">implementa</span>.</h1>
+    <p>Conteúdo, automação, CRM e IA conectados num sistema só. Veja o que cada solução resolve, o que entra e o resultado que você ganha.</p>
+    <nav class="toc" aria-label="Ir para a solução">
+      <a class="chip" href="#presenca">Presença &amp; conteúdo</a>
+      <a class="chip" href="#whatsapp">WhatsApp</a>
+      <a class="chip" href="#crm">CRM</a>
+      <a class="chip" href="#ia">IA aplicada</a>
+      <a class="chip" href="#produto">Produto &amp; monetização</a>
+      <a class="chip" href="#integracoes">Integrações</a>
+    </nav>
+  </div>
 </section>
 
 <div class="wrap">
 
-  <!-- 01 — MARCA -->
-  <article class="svc" id="marca">
-    <div class="svc-head" data-reveal>
-      <div class="svc-ic">🎯</div>
-      <div class="svc-n">01 — Marca</div>
-      <h2>Marca que pulsa</h2>
-      <p class="tagline">Antes de qualquer tecnologia, uma marca que as pessoas reconhecem.</p>
-    </div>
-    <div class="svc-body" data-reveal>
-      <p>Posicionamento, identidade e voz que fazem a sua empresa ser lembrada — e falar sempre do mesmo jeito, em todo canal. É a base que dá sentido a tudo que vem depois.</p>
-      <h4>O que entra</h4>
-      <ul>
-        <li>Núcleo da marca: propósito, posicionamento e promessa</li>
-        <li>Identidade visual: logo, cores, tipografia e aplicações</li>
-        <li>Voz e tom: como a marca fala — e o que ela nunca diz</li>
-        <li>Guia de marca pronto para o time e os parceiros usarem</li>
+  <!-- PRESENÇA -->
+  <article class="svc" id="presenca">
+    <header class="svc-head">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg></span>
+      <span class="svc-label">Presença &amp; conteúdo</span>
+      <h2>Sua marca vista com constância</h2>
+      <div class="svc-pain"><span class="tag tag-dor">A dor</span><p>“Meu trabalho é bom, mas ninguém vê.”</p></div>
+    </header>
+    <div class="svc-body">
+      <p class="svc-sol">Colocamos sua empresa para aparecer com frequência, com posicionamento claro e conteúdo que constrói autoridade. É a porta de entrada para todo o resto.</p>
+      <h3 class="svc-sub">O que entra</h3>
+      <ul class="checks">
+        <li>Posicionamento e linha editorial da marca</li>
+        <li>Calendário de conteúdo para as redes</li>
+        <li>Conteúdo pensado para atrair, gerar confiança e vender</li>
+        <li>Identidade visual e voz consistentes em todos os canais</li>
       </ul>
-      <div class="forwho">
-        <span class="k">Pra quem é</span>
-        <span class="v">Quem está começando, repaginando ou sente que "cada peça parece de uma empresa diferente".</span>
-      </div>
+      <div class="svc-result"><span class="tag tag-sol">Resultado</span><p>Sua marca vista com frequência e lembrada na hora da compra.</p></div>
     </div>
   </article>
 
-  <!-- 02 — ECOSSISTEMA -->
-  <article class="svc" id="ecossistema">
-    <div class="svc-head" data-reveal>
-      <div class="svc-ic">🔗</div>
-      <div class="svc-n">02 — Integração</div>
-      <h2>Ecossistema conectado</h2>
-      <p class="tagline">Suas ferramentas finalmente falando a mesma língua.</p>
-    </div>
-    <div class="svc-body" data-reveal>
-      <p>A gente conecta marca, marketing, vendas e atendimento num fluxo só. Chega de copiar dado na mão e de informação presa numa ferramenta que ninguém mais acessa.</p>
-      <h4>O que entra</h4>
-      <ul>
-        <li>Mapa do seu fluxo atual: onde trava e onde se perde dado</li>
-        <li>Integração entre site, CRM, redes, planilhas e pagamentos</li>
-        <li>Automação dos pontos repetitivos entre as áreas</li>
-        <li>Um lugar único de verdade para os seus dados</li>
+  <!-- WHATSAPP -->
+  <article class="svc" id="whatsapp">
+    <header class="svc-head">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5A8.5 8.5 0 1 1 21 11.5z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg></span>
+      <span class="svc-label">Automação de WhatsApp</span>
+      <h2>Atendimento que responde na hora</h2>
+      <div class="svc-pain"><span class="tag tag-dor">A dor</span><p>“Perco cliente porque demoro a responder.”</p></div>
+    </header>
+    <div class="svc-body">
+      <p class="svc-sol">Um atendimento automático que responde na hora, entende o que a pessoa precisa e leva a conversa até a venda, 24 horas por dia.</p>
+      <h3 class="svc-sub">O que entra</h3>
+      <ul class="checks">
+        <li>Respostas automáticas na voz da sua marca</li>
+        <li>Qualificação do contato com as perguntas certas</li>
+        <li>Agendamento e envio de informações sem trabalho manual</li>
+        <li>Passagem para atendimento humano quando precisar</li>
+        <li>Conexão direta com o seu CRM</li>
       </ul>
-      <div class="forwho">
-        <span class="k">Pra quem é</span>
-        <span class="v">Quem já usa várias ferramentas, mas elas não conversam — e o time vive apagando incêndio.</span>
-      </div>
+      <div class="svc-result"><span class="tag tag-sol">Resultado</span><p>Nenhum contato sem resposta e mais conversas virando venda.</p></div>
     </div>
   </article>
 
-  <!-- 03 — IA -->
+  <!-- CRM -->
+  <article class="svc" id="crm">
+    <header class="svc-head">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></span>
+      <span class="svc-label">CRM próprio</span>
+      <h2>Cada venda acompanhada até o fim</h2>
+      <div class="svc-pain"><span class="tag tag-dor">A dor</span><p>“Meus contatos estão espalhados em conversa e planilha.”</p></div>
+    </header>
+    <div class="svc-body">
+      <p class="svc-sol">Um CRM feito para o seu processo de venda, com cada lead, cada etapa e cada follow-up num lugar só.</p>
+      <h3 class="svc-sub">O que entra</h3>
+      <ul class="checks">
+        <li>Funil de vendas desenhado para o seu negócio</li>
+        <li>Registro automático dos contatos vindos das redes e do WhatsApp</li>
+        <li>Lembretes de follow-up no tempo certo</li>
+        <li>Visão clara do que está perto de fechar</li>
+      </ul>
+      <div class="svc-result"><span class="tag tag-sol">Resultado</span><p>Nenhuma oportunidade esquecida e vendas mais previsíveis.</p></div>
+    </div>
+  </article>
+
+  <!-- IA -->
   <article class="svc" id="ia">
-    <div class="svc-head" data-reveal>
-      <div class="svc-ic">⚡</div>
-      <div class="svc-n">03 — Inteligência artificial</div>
-      <h2>IA que resolve</h2>
-      <p class="tagline">Inteligência artificial no que dá retorno — não no que é moda.</p>
-    </div>
-    <div class="svc-body" data-reveal>
-      <p>Usamos IA onde ela realmente poupa tempo e traz resultado: atender mais rápido, escrever melhor, prever e priorizar. Sempre com clareza do porquê — nada de caixa-preta.</p>
-      <h4>O que entra</h4>
-      <ul>
-        <li>Agentes e automações de IA para tarefas repetitivas</li>
-        <li>Geração de conteúdo e mensagens na voz da sua marca</li>
-        <li>Triagem e priorização inteligente de leads e atendimentos</li>
-        <li>Integração da IA dentro das ferramentas que você já usa</li>
+    <header class="svc-head">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M19 15l.8 2.2 2.2.8-2.2.8L19 21l-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
+      <span class="svc-label">IA aplicada</span>
+      <h2>IA trabalhando no que toma seu tempo</h2>
+      <div class="svc-pain"><span class="tag tag-dor">A dor</span><p>“Sei que preciso usar IA, mas não sei por onde começar.”</p></div>
+    </header>
+    <div class="svc-body">
+      <p class="svc-sol">Colocamos a IA para trabalhar onde ela poupa horas: criação de imagens, produção de conteúdo e otimização de processos.</p>
+      <h3 class="svc-sub">O que entra</h3>
+      <ul class="checks">
+        <li>Criação de imagens com IA para campanhas e redes</li>
+        <li>Apoio de IA na produção de conteúdo</li>
+        <li>Otimização de processos repetitivos</li>
+        <li>Ferramentas configuradas para o seu dia a dia</li>
       </ul>
-      <div class="forwho">
-        <span class="k">Pra quem é</span>
-        <span class="v">Quem quer ganhar escala sem inchar o time — e cansou de "IA" que só impressiona e não entrega.</span>
-      </div>
+      <div class="svc-result"><span class="tag tag-sol">Resultado</span><p>Mais produção em menos tempo, sem perder a cara da sua marca.</p></div>
     </div>
   </article>
 
-  <!-- 04 — TEMPO REAL -->
-  <article class="svc" id="tempo-real">
-    <div class="svc-head" data-reveal>
-      <div class="svc-ic">📡</div>
-      <div class="svc-n">04 — Dados</div>
-      <h2>Tempo real</h2>
-      <p class="tagline">Decida pelo que acontece agora, não pelo que já passou.</p>
-    </div>
-    <div class="svc-body" data-reveal>
-      <p>Transformamos dados espalhados em um painel ao vivo, claro e fácil de ler. Você acompanha vendas, marca e atendimento pulsando — e age na hora, não no fim do mês.</p>
-      <h4>O que entra</h4>
-      <ul>
-        <li>Painel ao vivo com os números que importam pra você</li>
-        <li>Indicadores de marca, vendas e atendimento num lugar só</li>
-        <li>Alertas quando algo sai do esperado</li>
-        <li>Visão simples para decidir rápido, sem planilha gigante</li>
+  <!-- PRODUTO -->
+  <article class="svc" id="produto">
+    <header class="svc-head">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>
+      <span class="svc-label">Produto &amp; monetização</span>
+      <h2>Seu conhecimento virando receita</h2>
+      <div class="svc-pain"><span class="tag tag-dor">A dor</span><p>“Tenho conhecimento, mas ele não vira receita.”</p></div>
+    </header>
+    <div class="svc-body">
+      <p class="svc-sol">Transformamos o que você sabe em produto e criamos o caminho para monetizar o conteúdo que você já produz.</p>
+      <h3 class="svc-sub">O que entra</h3>
+      <ul class="checks">
+        <li>Criação de produto próprio</li>
+        <li>Estratégia para monetizar seu conteúdo</li>
+        <li>Estrutura de venda e entrega</li>
+        <li>Conexão com a sua presença nas redes</li>
       </ul>
-      <div class="forwho">
-        <span class="k">Pra quem é</span>
-        <span class="v">Quem decide no escuro ou só descobre o problema quando o relatório chega — tarde demais.</span>
-      </div>
+      <div class="svc-result"><span class="tag tag-sol">Resultado</span><p>Uma nova fonte de receita construída sobre a sua autoridade.</p></div>
+    </div>
+  </article>
+
+  <!-- INTEGRAÇÕES -->
+  <article class="svc" id="integracoes">
+    <header class="svc-head">
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M6.2 8l4.6 8M17.8 8l-4.6 8M7.2 6h9.6"/></svg></span>
+      <span class="svc-label">Integrações</span>
+      <h2>Suas ferramentas funcionando como uma só</h2>
+      <div class="svc-pain"><span class="tag tag-dor">A dor</span><p>“Minhas ferramentas não conversam entre si.”</p></div>
+    </header>
+    <div class="svc-body">
+      <p class="svc-sol">Conectamos redes, site, WhatsApp, CRM e pagamentos para tudo funcionar como um sistema só.</p>
+      <h3 class="svc-sub">O que entra</h3>
+      <ul class="checks">
+        <li>Mapa das ferramentas que você usa hoje</li>
+        <li>Integração entre redes, site, WhatsApp e CRM</li>
+        <li>Automação das tarefas entre uma ferramenta e outra</li>
+        <li>Seus dados num lugar só</li>
+      </ul>
+      <div class="svc-result"><span class="tag tag-sol">Resultado</span><p>Menos retrabalho e um negócio que funciona junto.</p></div>
     </div>
   </article>
 
 </div>
 
-<!-- ============================ PROCESSO ============================ -->
-<section class="wrap" aria-labelledby="proc-title">
-  <div class="shead" data-reveal>
-    <span class="kicker">Como funciona</span>
-    <h2 id="proc-title">Do caos ao sistema que pulsa</h2>
-    <p>Comece por uma frente ou monte o ecossistema inteiro — o método é o mesmo.</p>
+<!-- ============================ COMO ENTRAR ============================ -->
+<section class="section wrap" id="como-entrar" aria-labelledby="entrar-title">
+  <div class="shead">
+    <span class="kicker">Como entrar</span>
+    <h2 id="entrar-title">Três portas de entrada. Você escolhe por onde começar.</h2>
+    <p>Comece pelo que resolve sua dor agora e suba quando fizer sentido. As três formas funcionam juntas.</p>
   </div>
-  <div class="steps">
-    <div class="step" data-reveal><div class="stepn">01 — Escuta</div><h3>A gente entende</h3><p>Olhamos o seu negócio por inteiro: marca, ferramentas, vendas e onde o fluxo trava hoje.</p></div>
-    <div class="step" data-reveal><div class="stepn">02 — Desenho</div><h3>Mapeamos o ecossistema</h3><p>Desenhamos como marca, dados e ferramentas vão se conectar — com prioridade no que dá retorno primeiro.</p></div>
-    <div class="step" data-reveal><div class="stepn">03 — Implementação</div><h3>Conectamos de verdade</h3><p>Integramos, automatizamos e colocamos no ar. As peças soltas viram um sistema só.</p></div>
-    <div class="step" data-reveal><div class="stepn">04 — Pulso contínuo</div><h3>Acompanhamos ao vivo</h3><p>Painel em tempo real e ajuste constante. A gente fica ao lado — nunca por cima.</p></div>
-  </div>
+  <ol class="stairs">
+    <li class="step">
+      <div class="step-tag"><span class="c-cyan">Entrada</span><span>Degrau 1</span></div>
+      <h3 class="c-cyan">Produtos de entrada</h3>
+      <p>Soluções rápidas e acessíveis para uma dor específica.</p>
+      <ul>
+        <li>Otimização de processos</li>
+        <li>Criação de imagens com IA</li>
+        <li>Como monetizar seu conteúdo</li>
+      </ul>
+      <p class="step-motto">Porta de entrada acessível.</p>
+      <a class="btn btn-ghost btn-sm" href="#agendar">Começar por aqui</a>
+    </li>
+    <li class="step">
+      <div class="step-tag"><span class="c-violet">Aprender</span><span>Degrau 2</span></div>
+      <h3 class="c-violet">Mentoria</h3>
+      <p>Para quem quer aprender a fazer, com a Pulso ao lado guiando o caminho.</p>
+      <ul>
+        <li>Acompanhamento próximo</li>
+        <li>Você aprende aplicando no seu negócio</li>
+        <li>Direção clara em cada etapa</li>
+      </ul>
+      <p class="step-motto">A gente ensina a pescar.</p>
+      <a class="btn btn-ghost btn-sm" href="#agendar">Quero mentoria</a>
+    </li>
+    <li class="step">
+      <div class="step-tag"><span class="c-rose">Fazer</span><span class="badge">Mais completo</span></div>
+      <h3 class="c-rose">Assessoria</h3>
+      <p>Implementação sob medida. Você foca no negócio e a Pulso coloca tudo para funcionar.</p>
+      <ul>
+        <li>Automação de WhatsApp</li>
+        <li>CRM próprio</li>
+        <li>Criação de produto próprio</li>
+      </ul>
+      <p class="step-motto">A gente faz por você.</p>
+      <a class="btn btn-primary btn-sm" href="#agendar">Quero assessoria <span class="arrow">→</span></a>
+    </li>
+  </ol>
+  <p class="stairs-axis">acompanhamento e resultado crescem a cada degrau →</p>
 </section>
 
 <!-- ============================ CTA FINAL ============================ -->
-<section class="wrap cta-final" aria-labelledby="cta-title">
-  <div class="cta-box" data-reveal>
-    <h2 id="cta-title">Não sabe por onde <span class="grad">começar</span>?</h2>
-    <p>Essa é a melhor primeira conversa. Marque uma call de 30 minutos — a gente escuta o seu caso e indica a frente que traz resultado mais rápido pra você.</p>
+<section class="section wrap" id="agendar" aria-labelledby="cta-title">
+  <div class="cta-box">
+    <span class="kicker">Não sabe por onde começar?</span>
+    <h2 id="cta-title">A gente indica a <span class="grad">solução certa</span> para você</h2>
+    <p>Marque um diagnóstico de 30 minutos. A gente escuta o seu caso e mostra qual solução traz resultado mais rápido para o seu negócio.</p>
+    <ol class="cta-steps">
+      <li class="cta-step"><span>01</span><b>Diagnóstico</b><p>Entendemos seu negócio e onde estão os gargalos.</p></li>
+      <li class="cta-step"><span>02</span><b>Plano</b><p>Indicamos a solução e o formato certo para você.</p></li>
+      <li class="cta-step"><span>03</span><b>Implementação</b><p>A gente coloca para funcionar e acompanha até o resultado.</p></li>
+    </ol>
     <div class="actions">
       <!-- TODO: trocar o href abaixo pelo seu link de agendamento (Calendly/Cal.com) quando tiver. -->
-      <a class="btn btn-primary" href="AGENDAR_AQUI">Agendar uma call <span class="arrow">→</span></a>
+      <a class="btn btn-primary" href="AGENDAR_AQUI">Agendar diagnóstico <span class="arrow">→</span></a>
       <!-- Fallback: WhatsApp — trocar 5500000000000 pelo número real (formato internacional, só dígitos) -->
-      <a class="btn btn-ghost" href="https://wa.me/5500000000000?text=Oi%2C%20vim%20pelo%20site%20da%20Pulso%20Lab%20e%20quero%20agendar%20uma%20call." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a class="btn btn-ghost" href="https://wa.me/5500000000000?text=Oi%2C%20vim%20pelo%20site%20da%20Pulso%20Lab%20e%20quero%20agendar%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Falar no WhatsApp</a>
     </div>
-    <p class="note">Prefere e-mail? <a href="mailto:contato@pulsolab.tech" style="color:var(--cyan-ink)">contato@pulsolab.tech</a></p>
+    <p class="cta-note">Prefere e-mail? <span>contato@pulsolab.tech</span></p>
   </div>
 </section>
 
@@ -219,18 +310,20 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <div class="word"><b>Pulso</b> <span>Lab</span></div>
-        <p>Tecnologia que faz a sua empresa pulsar. Marca, integração e IA num ecossistema só.</p>
+        <p>Tecnologia com alma de agência. Conteúdo, automação, CRM e IA num sistema só.</p>
+        <p class="quote">“A gente não entrega projeto solto. Entrega ecossistema.”</p>
       </div>
       <div class="foot-col">
         <h4>Navegar</h4>
-        <a href="index.html#o-que-fazemos">O que fazemos</a>
-        <a href="servicos.html">Serviços</a>
-        <a href="index.html#produtos">Produtos</a>
+        <a href="servicos.html">Soluções</a>
+        <a href="#como-entrar">Como entrar</a>
+        <a href="index.html#diferencial">Diferencial</a>
         <a href="index.html#sobre">Sobre</a>
       </div>
       <div class="foot-col">
         <h4>Contato</h4>
-        <a href="index.html#agendar">Agendar uma call</a>
+        <!-- TODO: confirmar/ajustar os contatos abaixo -->
+        <a href="#agendar">Agendar diagnóstico</a>
         <a href="mailto:contato@pulsolab.tech">contato@pulsolab.tech</a>
         <a href="https://instagram.com/pulsolab" target="_blank" rel="noopener">@pulsolab</a>
       </div>
