@@ -58,6 +58,38 @@
     }, 1800);
   }
 
+  /* Vídeos em loop: tocam só quando visíveis e nunca para quem pediu menos movimento */
+  var loops = document.querySelectorAll("video[data-loop]");
+  if (loops.length && !reduce && "IntersectionObserver" in window) {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var p = e.target.play();
+          if (p && p.catch) p.catch(function () {});
+        } else {
+          e.target.pause();
+        }
+      });
+    }, { threshold: 0.15 });
+    loops.forEach(function (v) { vio.observe(v); });
+  }
+
+  /* Barra de CTA no celular: aparece depois do hero e some no CTA final */
+  var sticky = document.querySelector(".sticky-cta");
+  var heroEl = document.querySelector(".hero, .page-hero");
+  var ctaEl = document.getElementById("agendar");
+  if (sticky && heroEl && "IntersectionObserver" in window) {
+    var pastHero = false, atCta = false;
+    var updateSticky = function () {
+      var on = pastHero && !atCta;
+      sticky.classList.toggle("is-on", on);
+      sticky.inert = !on;
+    };
+    updateSticky();
+    new IntersectionObserver(function (es) { pastHero = !es[0].isIntersecting; updateSticky(); }).observe(heroEl);
+    if (ctaEl) new IntersectionObserver(function (es) { atCta = es[0].isIntersecting; updateSticky(); }).observe(ctaEl);
+  }
+
   /* Rede de nós no fundo do hero (canvas) */
   var canvas = document.querySelector(".hero-bg canvas");
   if (canvas && canvas.getContext) {

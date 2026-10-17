@@ -109,6 +109,13 @@
       </ul>
     </div>
 
+    <div class="hero-stage">
+    <div class="visual hero-visual" aria-hidden="true">
+      <img src="assets/img/v2/hero.webp" alt="" width="900" height="1125" fetchpriority="high">
+      <video data-loop muted loop playsinline preload="metadata" poster="assets/img/v2/hero.webp">
+        <source src="assets/img/v2/hero-loop.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="console" role="img" aria-label="Exemplo de fluxo automatizado: um post atrai um contato, o WhatsApp responde e qualifica, o lead entra no CRM e o follow-up é agendado.">
       <div class="console-bar" aria-hidden="true">
         <span class="dots"><i></i><i></i><i></i></span>
@@ -126,6 +133,7 @@
         <span class="is-active">Presença</span><span>Autoridade</span><span>Confiança</span><span>Venda</span>
       </div>
       <p class="console-note" aria-hidden="true">Exemplo ilustrativo de um fluxo montado pela Pulso</p>
+    </div>
     </div>
   </div>
 </section>
@@ -149,6 +157,10 @@
     <h2 id="dores-title">Nunca foi tão caro ser <span class="grad">invisível</span></h2>
     <p>A atenção virou o ativo mais disputado do mercado. Quem aparece todo dia vira referência. Quem não aparece é esquecido, por melhor que seja o que faz. Se alguma dessas frases é sua, a solução já existe.</p>
   </div>
+  <figure class="visual banner">
+    <img src="assets/img/v2/banner-invisivel.webp" alt="Parede de painéis apagados com um único painel aceso, cheio de notificações e mensagens" width="1600" height="686" loading="lazy">
+    <figcaption class="banner-cap"><span>Visibilidade</span><p>Entre dez empresas no escuro, o cliente escolhe a que ele consegue ver.</p></figcaption>
+  </figure>
   <div class="pains">
     <article class="pain spot">
       <span class="tag tag-dor">Dor</span>
@@ -276,6 +288,7 @@
   <div class="bento">
     <!-- WhatsApp -->
     <article class="tile tile-wa spot">
+      <div class="tile-bg" aria-hidden="true"><img src="assets/img/v2/sol-whatsapp.webp" alt="" width="960" height="723" loading="lazy"></div>
       <div class="mock chat" aria-hidden="true">
         <div class="chat-head">
           <span class="chat-av">SE</span>
@@ -296,6 +309,7 @@
 
     <!-- Presença -->
     <article class="tile spot">
+      <div class="tile-bg" aria-hidden="true"><img src="assets/img/v2/sol-presenca.webp" alt="" width="960" height="723" loading="lazy"></div>
       <div class="mock" aria-hidden="true">
         <div class="week">
           <span class="day on"><i></i>S</span><span class="day on"><i></i>T</span><span class="day on"><i></i>Q</span><span class="day on"><i></i>Q</span><span class="day on"><i></i>S</span><span class="day"><i></i>S</span><span class="day"><i></i>D</span>
@@ -311,6 +325,7 @@
 
     <!-- CRM -->
     <article class="tile spot">
+      <div class="tile-bg" aria-hidden="true"><img src="assets/img/v2/sol-crm.webp" alt="" width="960" height="723" loading="lazy"></div>
       <div class="mock" aria-hidden="true">
         <div class="kanban">
           <div class="kcol"><div class="kcol-h"><span>Contato</span><span>4</span></div><div class="kcard"><i></i><i></i></div><div class="kcard"><i></i><i></i></div></div>
@@ -327,6 +342,7 @@
 
     <!-- IA -->
     <article class="tile spot">
+      <div class="tile-bg" aria-hidden="true"><img src="assets/img/v2/sol-ia.webp" alt="" width="960" height="723" loading="lazy"></div>
       <div class="mock" aria-hidden="true">
         <p class="prompt"><b>›</b> crie 4 imagens para a campanha de lançamento, no estilo da marca</p>
         <div class="gen"><i></i><i></i><i></i><i></i></div>
@@ -340,6 +356,7 @@
 
     <!-- Produto -->
     <article class="tile spot">
+      <div class="tile-bg" aria-hidden="true"><img src="assets/img/v2/sol-produto.webp" alt="" width="960" height="723" loading="lazy"></div>
       <div class="mock" aria-hidden="true">
         <div class="prod">
           <span class="prod-cover"></span>
@@ -356,6 +373,7 @@
 
     <!-- Integrações -->
     <article class="tile tile-int spot">
+      <div class="tile-bg" aria-hidden="true"><img src="assets/img/v2/sol-integracoes.webp" alt="" width="960" height="723" loading="lazy"></div>
       <div class="tile-text">
         <span class="tile-label">Integrações</span>
         <h3>Tudo pulsando junto</h3>
@@ -405,6 +423,11 @@
     </div>
   </div>
   <p class="door">A gente começa pelo que mais dói hoje: <strong>colocar você para ser visto nas redes</strong>. Essa é a porta de entrada para todo o resto.</p>
+
+  <figure class="visual banner" style="margin-top: 40px; margin-bottom: 0">
+    <img src="assets/img/v2/banner-mao-na-massa.webp" alt="Mãos conectando os nós de um fluxo de automação num painel holográfico" width="1600" height="686" loading="lazy">
+    <figcaption class="banner-cap"><span>Mão na massa</span><p>A gente não para no PDF. Conecta peça por peça até funcionar.</p></figcaption>
+  </figure>
 
   <div class="pillars">
     <div class="pillar">
@@ -500,54 +523,65 @@
 </section>
 
 <!-- ============================ SOBRE ============================ -->
-<section class="section wrap" id="sobre" aria-labelledby="sobre-title">
-  <div class="shead">
-    <span class="kicker">Quem está à frente</span>
-    <h2 id="sobre-title">Marca na frente. Motor por trás.</h2>
+<section class="section-tight wrap" id="sobre" aria-labelledby="sobre-title">
+  <h2 id="sobre-title" class="sr-only">Quem está à frente</h2>
+  <div class="founder-strip">
+    <div class="founder-photo">
+      <picture>
+        <source srcset="assets/img/v2/ana-fernandes.webp" type="image/webp">
+        <img src="assets/img/v2/ana-fernandes.jpg" alt="Ana Fernandes, fundadora da Pulso Lab" width="480" height="600" loading="lazy">
+      </picture>
+    </div>
+    <div class="fs-text">
+      <span class="kicker">Quem está à frente</span>
+      <p class="fs-name">Ana Fernandes <span>· Fundadora</span></p>
+      <p>Lidera a marca, o conteúdo e a relação com cada cliente. Por trás dela, a Pulso opera o motor de tecnologia que transforma a promessa em entrega real.</p>
+    </div>
+    <div class="fs-ada">
+      <span class="tag">Bússola da marca</span>
+      <p><strong>Ada Lovelace</strong>, a primeira a ver que a máquina podia criar, não só calcular. Lógica e imaginação no mesmo lugar.</p>
+    </div>
   </div>
-  <div class="about">
-    <div class="founder">
-      <div class="founder-id">
-        <span class="avatar" aria-hidden="true">AF</span>
-        <div>
-          <h3>Ana Fernandes</h3>
-          <p>Fundadora · marca, conteúdo e relacionamento</p>
-        </div>
-      </div>
-      <p>A Ana lidera a marca, o conteúdo e a relação com cada cliente. É a voz e a cara pública da Pulso. Por trás dela, a Pulso opera o motor de tecnologia que transforma a promessa em entrega real.</p>
-      <div class="duo">
-        <div class="duo-card"><span class="c-cyan">O rosto</span><p>Marca, conteúdo, presença nas redes e relacionamento</p></div>
-        <span class="plus" aria-hidden="true">+</span>
-        <div class="duo-card"><span class="c-violet">O motor</span><p>Automações, CRM, IA e integrações</p></div>
-      </div>
-      <p class="duo-eq">Rosto + motor = <strong>um ecossistema que você sente funcionando.</strong></p>
-    </div>
-    <div class="ada">
-      <svg viewBox="0 0 160 160" role="img" aria-label="Emblema Ada Lovelace">
-        <defs><linearGradient id="ada-g" x1="20" y1="20" x2="140" y2="140" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="#2BE0FF"/><stop offset=".55" stop-color="#9A5BFF"/><stop offset="1" stop-color="#FF3D9A"/>
-        </linearGradient></defs>
-        <circle cx="80" cy="80" r="72" fill="none" stroke="url(#ada-g)" stroke-width="1" opacity=".3"/>
-        <circle cx="80" cy="80" r="62" fill="none" stroke="url(#ada-g)" stroke-width="1.4" opacity=".5"/>
-        <g transform="translate(80,80)">
-          <ellipse rx="40" ry="15" transform="rotate(34)" fill="none" stroke="url(#ada-g)" stroke-width="1.8" opacity=".55"/>
-          <ellipse rx="40" ry="15" transform="rotate(-34)" fill="none" stroke="url(#ada-g)" stroke-width="1.8" opacity=".55"/>
-          <circle r="10" fill="url(#ada-g)"/>
-          <circle cx="0" cy="-15" r="3.3" fill="url(#ada-g)"/>
-          <circle cx="33" cy="9" r="3.3" fill="url(#ada-g)"/>
-          <circle cx="-33" cy="9" r="3.3" fill="url(#ada-g)"/>
-        </g>
-      </svg>
-      <span class="kicker">A bússola da marca</span>
-      <h3>Ada Lovelace</h3>
-      <p>A primeira a enxergar que a máquina podia <strong>criar</strong>, não só calcular. Ela chamava isso de ciência poética: lógica e imaginação no mesmo lugar. São os dois valores que guiam a Pulso.</p>
-    </div>
+</section>
+
+<!-- ============================ PERGUNTAS FREQUENTES ============================ -->
+<section class="section wrap" id="faq" aria-labelledby="faq-title">
+  <div class="shead">
+    <span class="kicker">Perguntas frequentes</span>
+    <h2 id="faq-title">Antes de agendar</h2>
+  </div>
+  <div class="faq">
+    <details>
+      <summary>Para quem é a Pulso Lab?</summary>
+      <p>Para pequenas e médias empresas que precisam aparecer, organizar as vendas e usar tecnologia e IA de verdade, sem depender de uma grande agência.</p>
+    </details>
+    <details>
+      <summary>Vocês só fazem a estratégia ou implementam também?</summary>
+      <p>Implementamos. Esse é o nosso diferencial: a Pulso entra junto, coloca conteúdo, automação e IA para funcionar dentro do seu negócio e acompanha até o resultado aparecer.</p>
+    </details>
+    <details>
+      <summary>Preciso entender de tecnologia para começar?</summary>
+      <p>Não. A gente traduz o técnico e cuida da parte complicada. Na mentoria você aprende fazendo; na assessoria a gente faz por você.</p>
+    </details>
+    <details>
+      <summary>Qual formato é melhor para mim?</summary>
+      <p>Depende do momento do seu negócio. Os produtos de entrada resolvem uma dor específica, a mentoria ensina você a fazer e a assessoria implementa tudo sob medida. O diagnóstico serve justamente para indicar o caminho certo.</p>
+    </details>
+    <details>
+      <summary>Por onde a gente começa?</summary>
+      <p>Pelo que mais dói hoje: colocar você para ser visto nas redes. A partir daí, conectamos atendimento no WhatsApp, CRM e automação para a atenção virar venda.</p>
+    </details>
   </div>
 </section>
 
 <!-- ============================ CTA FINAL ============================ -->
 <section class="section wrap" id="agendar" aria-labelledby="cta-title">
   <div class="cta-box">
+    <div class="cta-bg" aria-hidden="true">
+      <video data-loop muted loop playsinline preload="none" poster="assets/img/v2/cta-pulso.webp">
+        <source src="assets/img/v2/cta-loop.mp4" type="video/mp4">
+      </video>
+    </div>
     <span class="kicker">A visão: fazer tudo pulsar junto</span>
     <h2 id="cta-title">Pronto para ser visto e vender no <span class="grad">automático</span>?</h2>
     <p>Marque um diagnóstico de 30 minutos. A gente mostra onde sua empresa está perdendo atenção e venda, e qual é a porta de entrada certa para começar.</p>
@@ -605,6 +639,10 @@
     </div>
   </div>
 </footer>
+
+<div class="sticky-cta">
+  <a class="btn btn-primary" href="#agendar">Agendar diagnóstico <span class="arrow">→</span></a>
+</div>
 
 <script src="assets/js/main.js" defer></script>
 </body>
