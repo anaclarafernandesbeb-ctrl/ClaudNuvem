@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Pulso Lab">
+  <defs>
+    <linearGradient id="g" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2BE0FF"/><stop offset=".55" stop-color="#9A5BFF"/><stop offset="1" stop-color="#FF3D9A"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="11" fill="#0B0916"/>
+  <g transform="translate(24,24)">
+    <circle r="15" fill="none" stroke="url(#g)" stroke-width="2.3" opacity=".4"/>
+    <line x1="0" y1="0" x2="0" y2="-13.4" stroke="url(#g)" stroke-width="2.1" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="11.6" y2="6.5" stroke="url(#g)" stroke-width="2.1" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-11.6" y2="6.5" stroke="url(#g)" stroke-width="2.1" stroke-linecap="round"/>
+    <circle r="4.6" fill="url(#g)"/>
+    <circle cx="0" cy="-15" r="3.3" fill="url(#g)"/>
+    <circle cx="13" cy="7" r="3.3" fill="url(#g)"/>
+    <circle cx="-13" cy="7" r="3.3" fill="url(#g)"/>
+  </g>
+</svg>

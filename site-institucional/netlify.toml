@@ -1,0 +1,25 @@
+# ============================================================
+# Pulso Lab — site institucional (estático) · pulsolab.tech
+# Este arquivo é lido quando o site Netlify tem a "Base directory"
+# configurada como:  site-institucional
+# (deploy SEPARADO do app Prospecta, que usa o netlify.toml da raiz)
+# ============================================================
+
+[build]
+  publish = "."
+  # Site estático: não há etapa de build.
+  command = ""
+
+# Cache dos assets (imutáveis o bastante para um site institucional)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Cabeçalhos de segurança básicos
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
