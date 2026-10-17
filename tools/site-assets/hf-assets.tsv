@@ -1,0 +1,15 @@
+# Padrão visual: C. Interface holográfica (aprovado pela cliente)
+# arquivo_destino	largura_alvo	url_origem (Higgsfield / CloudFront)
+hero	900	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032503_f1ae9a2a-3891-41f0-99f5-f2be6ddc0be6.png
+banner-invisivel	1600	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032502_c972d8a5-3adf-4022-9d10-2c995c75f940.png
+banner-mao-na-massa	1600	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032503_a33cd8ab-0bf8-445b-9d90-f1177aca713c.png
+cta-pulso	1600	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032516_4957fcd3-cec1-4c31-803d-662a190f9f36.png
+sol-presenca	960	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032548_140d65d6-94ad-44cf-9c90-066a428e10b4.png
+sol-whatsapp	960	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_031923_db6ecd93-cc1e-4346-8298-2ab140763c9f.png
+sol-crm	960	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032548_3da6383e-ae7c-41e1-8f0e-4a1e79e23b00.png
+sol-ia	960	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032549_3ff2e8f1-ce6f-443e-a076-3fa598dba8b5.png
+sol-produto	960	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032619_fbc97852-0c20-4e18-9065-9cc03ff8f526.png
+sol-integracoes	960	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032618_1a1e0dc2-eecd-429f-972a-ab2b672d00c2.png
+# vídeos (Kling 3.0, loop com quadro inicial = final) — URLs entram quando terminarem
+hero-loop	video	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032715_a2199654-2d3a-4b10-bb77-13075345ee3a.mp4
+cta-loop	video	https://d8j0ntlcm91z4.cloudfront.net/user_3E0dNdIpshpZFRI0PZBikzl9yie/hf_20261017_032717_dd5b4694-7e00-482d-8f9f-9137191efa54.mp4
