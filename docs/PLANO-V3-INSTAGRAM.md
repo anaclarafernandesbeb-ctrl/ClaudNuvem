@@ -101,6 +101,22 @@ A usuária cola a resposta (ou ela chega pelo inbound) e a IA:
 
 1. ✅ Concluir a base atual (GitHub e teste de login).
 2. Ana: confirmar que a @anafernandes.ia é uma conta comercial ligada a uma Página do Facebook, e definir a oferta que vai testar.
-3. Claude: implementar o Motor de Conversão (seções 3.1 a 3.5) e a fonte de leads do Instagram.
+3. ✅ Claude: Motor de Conversão (3.1 a 3.5) e fonte de leads por lista de @ ou planilha, no menu **Instagram** do app. Falta: ligar o Business Discovery (app da Meta) e o inbound do ChatFyre.
 4. 4 semanas de teste com métricas reais.
 5. Decidir se vai vender, com base nos números.
+
+## 8. Como está implementado (MVP de uso próprio)
+
+| Peça | Onde |
+|---|---|
+| Tabelas `ofertas_ig`, `perfis_ig`, `mensagens_ig`, `bloqueios_ig` | `supabase/migrations/0002_instagram.sql` |
+| Tela **Minha oferta** | `/instagram/oferta` |
+| Lista do dia (meta de 20 DMs, follow-ups D+2 e D+5, adicionar @ ou CSV, Raio-X em lotes de 5) | `/instagram` |
+| Perfil: Raio-X, DM pronta, "Copiar e abrir DM", conversa, leitor de respostas e objeções | `/instagram/[id]` |
+| Placar por gancho e por nicho + funil | `/instagram/placar` |
+| Prompts | `web/src/lib/ia-instagram.ts` (Raio-X com Haiku; DMs e conversa com Sonnet, via `IA_MODELO_ESCRITA`) |
+| Business Discovery | `web/src/lib/meta.ts`, ativado pelas variáveis `META_ACCESS_TOKEN` e `IG_USER_ID` |
+
+O placar substitui a tabela `aprendizados` prevista: ele é calculado direto do funil, e a partir de 10 abordagens o resumo vai junto nos prompts.
+Sem as variáveis da Meta, a usuária cola a bio no perfil e a IA analisa do mesmo jeito.
+A conta @anafernandes.ia é comercial e está ligada à Página **Pulso Lab**, então o Business Discovery pode ser ligado.
