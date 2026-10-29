@@ -43,14 +43,15 @@ function descreverEmpresa(e: Empresa, cnaeDescricao?: string | null) {
     .join("\n");
 }
 
-async function pedir<T extends z.ZodType>(
+export async function pedir<T extends z.ZodType>(
   schema: T,
   system: string,
   prompt: string,
   maxTokens = 2000,
+  modelo = MODELO,
 ): Promise<z.infer<T>> {
   const resposta = await cliente.messages.parse({
-    model: MODELO,
+    model: modelo,
     max_tokens: maxTokens,
     system,
     messages: [{ role: "user", content: prompt }],

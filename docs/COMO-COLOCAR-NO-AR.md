@@ -23,6 +23,7 @@ Ordem recomendada (cerca de 1h30 no total):
    - Crie uma senha forte para o banco e **guarde-a** (num gerenciador de senhas).
 2. No menu lateral, abra **SQL Editor** → **New query**.
 3. Copie todo o conteúdo do arquivo [`supabase/migrations/0001_init.sql`](../supabase/migrations/0001_init.sql), cole e clique em **Run**. Deve aparecer "Success".
+   Depois, numa nova query, faça o mesmo com [`supabase/migrations/0002_instagram.sql`](../supabase/migrations/0002_instagram.sql) (as tabelas da versão Instagram).
 4. Vá em **Authentication → URL Configuration**:
    - **Site URL**: o endereço do site (você terá esse endereço no passo 4; volte aqui depois).
    - **Redirect URLs**: adicione `https://SEU-SITE/auth/callback`.
