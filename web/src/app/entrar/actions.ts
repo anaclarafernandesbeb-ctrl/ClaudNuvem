@@ -17,6 +17,12 @@ export async function enviarLink(_: EstadoEntrar, formData: FormData): Promise<E
     email,
     options: { emailRedirectTo: `${origem}/auth/callback` },
   });
-  if (error) return { erro: "Não foi possível enviar o link agora. Tente de novo." };
+  if (error) {
+    console.error("Login por link falhou:", error.status, error.code, error.message);
+    if (error.status === 429 || error.code === "over_email_send_rate_limit") {
+      return { erro: "Muitos pedidos de link em pouco tempo. Espere alguns minutos e tente de novo." };
+    }
+    return { erro: `Não foi possível enviar o link agora (${error.code ?? error.status ?? "erro"}: ${error.message}).` };
+  }
   return { ok: true };
 }
